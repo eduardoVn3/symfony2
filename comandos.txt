@@ -41,3 +41,12 @@ al termianr
 			{% endfor %}
 		</div>
 	</article>
+
+	generar el controlador 
+	generate:controllers
+
+	al darle comprar un producto se guarda en sesion el id y el precio
+
+	1)tarea implementar toolbar en el template de base
+	2) la accion de la caja de busqueda filtrar por nombre(con funcion %LIKE% mysql por get)
+	el action de form action="{{path('Product_list')},{method="GET"}}""

@@ -9,7 +9,8 @@
 				<img class="thumbnail" src="https://placehold.it/500x600">
 				<h5>{{producto.name}}</h5>
 				<p>${{producto.price}}</p>
-				<a href="#" class="button expanded">Buy</a>
+				<a href="{{path('Product_view',{id:producto.id})}}" class="button expanded">Ver Producto</a>
+				<a href="#" class="button expanded">Agregar al carrito</a>
 				</div>
 			{% endfor %}
 		</div>

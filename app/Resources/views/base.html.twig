@@ -13,6 +13,18 @@
         {% endblock %}
     </head>
     <body>
+        {% block navigator %}
+            <div class="top-bar" id="responsive-menu">
+              <div class="top-bar-right">
+                <ul class="menu">
+                  <form action="" method="">
+                      <input type="text" placeholder="Search">
+                      <input type="submit" value="Search">
+                  </form>
+                </ul>
+              </div>
+            </div>
+        {% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
         <!-- <article class="grid-container">
