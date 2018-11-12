@@ -1,0 +1,5 @@
+comando para crear bundle
+
+generate:bundle
+agregar bundle al autoload
+se acualiza el bundle en el compouser.json
