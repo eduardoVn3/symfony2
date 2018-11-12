@@ -3,3 +3,41 @@ comando para crear bundle
 generate:bundle
 agregar bundle al autoload
 se acualiza el bundle en el compouser.json
+
+  debug:router --show-controllers
+
+crear base de datos 
+
+  doctrine:database:create
+
+cada fila de una tabla es una entidad
+
+ doctrine:generate:entitry
+-entity name : "nombre de la tabla"
+-config : anotation
+-new fields name : ""
+-longitud
+-tipo de datos
+
+al termianr
+
+	doctrine:schema:update --force
+
+	importantes
+	gettype()
+	get_class()
+	get_class_methods()
+	var_dump()
+
+	<article class="grid-container">
+		<div class="grid-x grid-margin-x small-up-2 medium-up-2 large-up-4">
+			{% for producto in productos %}
+				<div class="cell">
+				<img class="thumbnail" src="https://placehold.it/500x600">
+				<h5>{{producto.name}}</h5>
+				<p>${{producto.price}}</p>
+				<a href="#" class="button expanded">Buy</a>
+				</div>
+			{% endfor %}
+		</div>
+	</article>
