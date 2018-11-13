@@ -13,6 +13,10 @@ class showController extends Controller
     public function viewAction($id)
     {
     	$producto = $this->getDoctrine()->getRepository('ProductoBundle:Producto')->find($id);
+    	// echo json_encode($producto);
+    	// new \ecommarg\cart\Cart();
+    	//obtener servicio
+    	// $this->get('app.Cart');
     	return $this->render('ProductoBundle:Default:show.html.twig',['producto'=> $producto]);
     }
 }

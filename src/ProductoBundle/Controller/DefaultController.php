@@ -12,20 +12,40 @@ class DefaultController extends Controller
 	*/
     public function indexAction()
     {
-    	$request = $this->getRequest()->get('name');
-    	if(!isset($request))
-    	{
+    	// $request = $this->getRequest()->get('name');
+        
+    	// if(!isset($request))
+    	// {
     		$productos = $this->getDoctrine()->getRepository('ProductoBundle:Producto')->findAll();
-    		return $this->render('ProductoBundle:Default:index.html.twig',['productos'=> $productos]);
-    	}
-    	$productos = $this->getDoctrine()->getRepository('ProductoBundle:Producto')->createQueryBuilder('o')
-    								 ->where('o.name LIKE :name')
-    								 ->setParameter('name', '%'.$request.'%')
-    								 ->getQuery()
-    								 ->getResult();
+    	// }
+
+    	// $productos = $this->getDoctrine()->getRepository('ProductoBundle:Producto')->createQueryBuilder('o')
+    	// 							 ->where('o.name LIKE :name')
+    	// 							 ->setParameter('name', '%'.$request.'%')
+    	// 							 ->getQuery()
+    	// 							 ->getResult();
     	return $this->render('ProductoBundle:Default:index.html.twig',['productos'=> $productos]);
-    	//traer todos de la base de datos
-    	// $productos = $this->getDoctrine()->getRepository('ProductoBundle:Producto')->findAll();
-    	// return $this->render('ProductoBundle:Default:index.html.twig',['productos'=> $productos]);
+    }
+
+    /**
+    *@Route("/product/cart/add/{id}/quantity/{quantity}" , name="Product_add_cart")
+    */
+    public function addToCartAction($id, $quantity)
+    {
+        $producto = $this->getDoctrine()->getRepository('ProductoBundle:Producto')->find($id);
+        if(null === $producto)
+        {
+            throw new \Exception("Product not found");
+        }
+        $this->get('app.Cart')->add($producto);
+        die();
+    }
+
+    /**
+    *@Route("/product/cart/view" , name="Product_view_cart")
+    */
+    public function viewToCartAction()
+    {
+        var_dump($this->get('app.Cart')->get(1));
     }
 }

@@ -49,4 +49,64 @@ al termianr
 
 	1)tarea implementar toolbar en el template de base
 	2) la accion de la caja de busqueda filtrar por nombre(con funcion %LIKE% mysql por get)
-	el action de form action="{{path('Product_list')},{method="GET"}}""
+	el action de form action="{{path('Product_list')},{method="GET"}}"
+
+	sesiones
+	crea un archivo de texto serializado que se guarda en una carpeta temporal
+	del lado del cliente la sesion setea una coookie
+
+	el cookie se le conoce como phpsessid por defecto (se puede cambiar el nombre para no saber que back se esta usandoseguridad atravez de la oscuridad)
+	el formato por defecto de la sesiones de php son codigo se puede ejecutar
+	serializar datos en php es mas seguro json que no ejecuta codigo php
+
+	los servicios son objetos y se utiliza par ainizializar una sesion y utilizarla atravez de (service container) es una coleccion de objetos
+
+	todo lo que este en la carpeta app es global
+
+	yamel formato preferente de symfony
+
+	registrar sesiones en services.yml debe estar separado con margenes de 3 espacios
+	app.Session:
+      class: symfony\Component\HttpFoundation\Session\Session
+      callMethd: 'Start'
+
+      todo servicio debe tener una interface que contengan psro una clase mediadiora que diga esos metodos deben estar
+
+      jamas usar variables globales dentro de las funciones
+
+      barra en implements \ global de namespace forma de declarar cuando no hay un namespace
+
+      la primera parte del autoload composer.json es el namespace : luego la direccion donde estan las clases
+      ./composer dump-autoload para generar los nuevos autoloads
+
+      registrar como un servicio
+
+      como argumento en el constructor 
+
+      crear nueva clase en el namespace ecommarg\cart;
+      class SessionAdapter implements SaveAdapterInterface
+      {
+      	public function __construct()
+      	{
+      		objeto de sesion
+      		(session $session)
+      		{
+
+      		}
+      	}
+      }
+
+      registrar el adaptador como un registro sessionAdapter
+
+      type dogging (leer buscar informacion)
+      repo: xeneise19/symfony2
+
+      tarea
+      en la clase cart implementar metodo getAll();
+      tiene que estar en la interface de cart
+
+      le debe pedir al adaptador que tiene setreado el carrito
+      se debe guardar en : ecommarg_cart_session=>[
+      	1=>{dadwdawdaw},
+      	2=>{wadwdaww}
+      ]
