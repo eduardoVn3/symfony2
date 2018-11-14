@@ -39,26 +39,19 @@ class DefaultController extends Controller
             throw new \Exception("Product not found");
         }
 
-        $this->get('app.cart')->add($producto);
+        $cartService = $this->get('app.cart');
+
+        $cartService->add($producto);
+
         die();
     }
 
     /**
-    *@Route("/product/cart/view/one" , name="Product_view_one_cart")
+    *@Route("/product/cart/view" , name="product_view_cart")
     */
     public function viewCartAction(){
         var_dump($this->get('app.cart')
-        ->get('ecommarg_cart_session')
-        );
-        die();
-    }
-
-    /**
-    *@Route("/product/cart/view/all" , name="Product_view_all_cart")
-    */
-    public function viewAllCartAction(){
-        var_dump($this->get('app.cart')
-        ->all('ecommarg_cart_session')
+        ->all()
         );
         die();
     }
