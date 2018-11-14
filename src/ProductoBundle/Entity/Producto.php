@@ -4,6 +4,7 @@ namespace ProductoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ecommarg\cart\ProductInterface;
+use Doctrine\Commer\Collections\ArrayCollection;
 
 /**
  * Producto
@@ -53,6 +54,21 @@ class Producto implements ProductInterface
      */
     private $stock;
 
+    /**
+    *@ORM\ManyToMany(targetEntity="Category",inversedBy="Producto")
+    *@ORM\JoinTable(name="product_category")
+    */
+    private $categories = null;
+
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
+
+    public function getCategories($value='')
+    {
+        return $this->categories;
+    }
 
     /**
      * Get id

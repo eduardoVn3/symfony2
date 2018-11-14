@@ -129,3 +129,5 @@ al termianr
 
       TAREA: que el carro sea capaz de tomar mas de un adaptador
       se debe crear un metodo que tome el saveInterface en el carrito toma un saveadapter interface y se guarda en un array hacer un foreach y llamo al metodo set del adaptador
+
+      LEER: "nested set vs adyacency model" preferentemente el nested set
