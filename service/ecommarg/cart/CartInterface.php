@@ -10,4 +10,5 @@ Interface CartInterface{
 
 	public function get($id);
 
+	public function all();
 }

@@ -13,11 +13,16 @@ Class Cart implements CartInterface{
 	}
 
 	public function add(Product $producto){
-		$this->adapter->set($producto->getId(),json_encode($producto));
+		$this->adapter->set('ecommarg_cart_session',[json_encode($producto)]);
+		;
 	}
 
 	public function get($id){
 		return $this->adapter->get($id);
+	}
+
+	public function all(){
+		return $this->adapter->all();
 	}
 
 }
