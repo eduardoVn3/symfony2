@@ -4,15 +4,17 @@ parameters:
     #parameter_name: value
 
 services:
+   app.session:
+      class: symfony\component\HttpFoundation\Session\Session
+      callMethod: 'start'
+
+   app.cart.adapter:
+      class: ecommarg\cart\SessionAdapter
+      arguments: ['@app.session']
+
+   app.cart:
+      class: ecommarg\cart\Cart
+      arguments: ['@app.cart.adapter']
     #service_name:
     #    class: AppBundle\Directory\ClassName
     #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
-    app.Session:
-      class: symfony\Component\HttpFoundation\Session\Session
-      callMethd: 'Start'
-    app.Cart.adapter:
-      class: ecommarg\cart\SessionAdapter
-      arguments: ['@app.Session']
-    app.Cart:
-      class: ecommarg\cart\Cart
-      arguments: ['@app.Cart.adapter']

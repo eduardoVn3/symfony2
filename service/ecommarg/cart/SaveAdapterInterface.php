@@ -1,9 +1,10 @@
 <?php 
 
-	namespace ecommarg\cart;
+namespace ecommarg\cart;
 
-	interface SaveAdapterInterface
-	{
-		public function set($key, $value);
-		public function get($id);
-	}
+Interface SaveAdapterInterface{
+
+	public function set($key,$value);
+
+	public function get($key);
+}

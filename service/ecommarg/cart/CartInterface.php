@@ -1,11 +1,13 @@
 <?php 
-	
-	namespace ecommarg\cart;
 
-	use ecommarg\cart\ProductInterface as Product;
+namespace ecommarg\cart;
 
-	interface CartInterface
-	{
-		public function add(Product $poduct);
-		public function get($id);
-	}
+use ecommarg\cart\ProductInterface as Product;
+
+Interface CartInterface{
+
+	public function add(Product $p);
+
+	public function get($id);
+
+}

@@ -30,22 +30,26 @@ class DefaultController extends Controller
     /**
     *@Route("/product/cart/add/{id}/quantity/{quantity}" , name="Product_add_cart")
     */
-    public function addToCartAction($id, $quantity)
-    {
-        $producto = $this->getDoctrine()->getRepository('ProductoBundle:Producto')->find($id);
-        if(null === $producto)
-        {
+    public function addToCartAction($id,$quantity){
+        $producto= $this->getDoctrine()
+        ->getRepository('ProductoBundle:Producto')
+        ->find($id);
+
+        if(null===$producto){
             throw new \Exception("Product not found");
         }
-        $this->get('app.Cart')->add($producto);
+
+        $this->get('app.cart')->add($producto);
         die();
     }
 
     /**
     *@Route("/product/cart/view" , name="Product_view_cart")
     */
-    public function viewToCartAction()
-    {
-        var_dump($this->get('app.Cart')->get(1));
+    public function viewCartAction(){
+        var_dump($this->get('app.cart')
+        ->get(2)
+        );
+        die();
     }
 }
