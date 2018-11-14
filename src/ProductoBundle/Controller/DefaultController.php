@@ -50,9 +50,9 @@ class DefaultController extends Controller
     *@Route("/product/cart/view" , name="product_view_cart")
     */
     public function viewCartAction(){
-        var_dump($this->get('app.cart')
-        ->all()
-        );
-        die();
+        $cartService = $this->get('app.cart');
+        $productos = $cartService->getAll();
+        var_dump($productos);
+        return $this->render('ProductoBundle:Producto:cartList.html.twig',['productos'=> $productos]);
     }
 }

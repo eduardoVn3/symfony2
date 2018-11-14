@@ -110,3 +110,9 @@ al termianr
       	1=>{dadwdawdaw},
       	2=>{wadwdaww}
       ]
+
+      git stash para guardar el repositoriod e forma temporal
+
+      git pull para bajar lo del repositorio
+
+      git stash apply para ver los problemas
