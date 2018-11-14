@@ -27,4 +27,9 @@ Class SessionAdapter implements SaveAdapterInterface{
 	{
 		return $this->session->all();
 	}
+
+	public function replace($array)
+	{
+		return $this->session->replace($array);
+	}
 }

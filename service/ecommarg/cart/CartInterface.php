@@ -11,4 +11,5 @@ Interface CartInterface{
 	public function get($id);
 
 	public function all();
+	public function replace($array);
 }
