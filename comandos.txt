@@ -116,3 +116,16 @@ al termianr
       git pull para bajar lo del repositorio
 
       git stash apply para ver los problemas
+
+      1) creaar un adaptador que guarde en un archivo (cualquiera)
+      los productos agregados l carrito
+
+      2)hacer que el carrito tome varios adaptadores
+
+      file_put_contents($string \ FILE_APPEND)
+      cuando se coloque una comilla dobles "" una variable el valor de la variable se expande es decir que se muestra el valor de dicha variable
+
+      joah /joante
+
+      TAREA: que el carro sea capaz de tomar mas de un adaptador
+      se debe crear un metodo que tome el saveInterface en el carrito toma un saveadapter interface y se guarda en un array hacer un foreach y llamo al metodo set del adaptador

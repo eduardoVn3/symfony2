@@ -27,8 +27,4 @@ Class Cart implements CartInterface{
 		return $this->adapter->getAll();
 	}
 
-	public function replace($array){
-		return $this->adapter->replace($array);
-	}
-
 }

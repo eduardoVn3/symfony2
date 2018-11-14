@@ -42,7 +42,6 @@ class DefaultController extends Controller
         $cartService = $this->get('app.cart');
 
         $cartService->add($producto);
-
         die();
     }
 
@@ -52,7 +51,7 @@ class DefaultController extends Controller
     public function viewCartAction(){
         $cartService = $this->get('app.cart');
         $productos = $cartService->getAll();
-        var_dump($productos);
+        // var_dump($productos);
         return $this->render('ProductoBundle:Producto:cartList.html.twig',['productos'=> $productos]);
     }
 }
