@@ -4,17 +4,17 @@
   <article class="grid-container">
   <br>
   <h1>Carrito</h1>
-    {% for producto in productos %}
+    {% for item in cart %}
       <div class="grid-x align-center callout">
       <div class="cell medium-8">
       <div class="blog-post">
-      <h3>{{producto.name}}<!-- <small>3/6/2016</small> --></h3>
+      <h3>{{item.product.name}}<!-- <small>3/6/2016</small> --></h3>
       <img class="thumbnail" src="https://placehold.it/850x350">
       <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus.</p>
       <div class="callout">
       <ul class="menu simple">
-      <li><a href="#">Precio: ${{producto.price}}</a></li>
-      <!-- <li><a href="#">Comments: 3</a></li> -->
+      <li><span>Precio: ${{item.product.price}}</span></li>
+      <li><span>Cantidad : {{item.quantity}}</span></li>
       </ul>
       </div>
       </div>

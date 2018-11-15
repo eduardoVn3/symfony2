@@ -13,17 +13,17 @@ Class Cart implements CartInterface{
 		$this->adapter=$adapter;
 	}
 
-	public function add(Product $producto, $quantity = 1){
+	public function add(Product $product, $quantity = 1){
 		$quantity = (int) $quantity;
 		if($quantity <= 0)
 		{
 			throw new \Exception("Cantidad invalida");
 		}
 		$this->adapter->set(
-			$producto->getId(),
+			$product->getId(),
 			json_encode([
 					'quantity'=>$quantity,
-					'producto'=>$producto
+					'product'=>$product
 				])
 		);
 	}

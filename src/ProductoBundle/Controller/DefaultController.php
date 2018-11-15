@@ -29,7 +29,7 @@ class DefaultController extends Controller
     }
 
     /**
-    *@Route("/add" , name="product_add_cart" , methods="POST")
+    *@Route("/cart/add" , name="product_add_cart" , methods="POST")
     */
     public function addToCartAction(Request $r)
     {
@@ -46,17 +46,18 @@ class DefaultController extends Controller
         $cartService = $this->get('app.cart');
 
         $cartService->add($producto);
-        die();
+        return $this->redirect($this->generateUrl('product_view_cart'));
     }
 
     /**
-    *@Route("/product/cart/view" , name="product_view_cart")
+    *@Route("/cart/view" , name="product_view_cart")
     */
     public function viewCartAction()
     {
         $cartService = $this->get('app.cart');
         $productos = $cartService->getAll();
         // var_dump($productos);
-        return $this->render('ProductoBundle:Producto:cartList.html.twig',['productos'=> $productos]);
+        // die();
+        return $this->render('ProductoBundle:Producto:cartList.html.twig',['cart'=> $productos]);
     }
 }
