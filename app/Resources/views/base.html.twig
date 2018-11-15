@@ -22,6 +22,13 @@
     <body>
         {% block navigator %}
             <div class="top-bar" id="responsive-menu">
+            <div class="top-bar-left">
+              <ul class="dropdown menu" data-dropdown-menu>
+              <li class="menu-text">E-commerce</li>
+              <li><a href="{{path('Product_list')}}">Productos</a></li>
+              <!-- <li><a href="#">One</a></li> -->
+              </ul>
+            </div>
               <div class="top-bar-right">
                 <ul class="menu">
                 <a href="{{path('product_view_cart')}}" class="clear button small primary"><i class="fas fa-cart-plus fa-2x"></i></a>

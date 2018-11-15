@@ -17,8 +17,8 @@ class showController extends Controller
     	// new \ecommarg\cart\Cart();
     	//obtener servicio
     	// $this->get('app.Cart');
-        var_dump(get_class_methods($this->container));
-        die();
+        // var_dump(get_class_methods($this->container));
+        // die();
     	return $this->render(
             'ProductoBundle:Default:show.html.twig',
             [
