@@ -4,6 +4,7 @@ namespace ProductoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -28,9 +29,12 @@ class DefaultController extends Controller
     }
 
     /**
-    *@Route("/product/cart/add/{id}/quantity/{quantity}" , name="Product_add_cart")
+    *@Route("/add" , name="product_add_cart" , methods="POST")
     */
-    public function addToCartAction($id,$quantity){
+    public function addToCartAction(Request $r)
+    {
+        $id = $r->get('id');
+        $quantity = $r->get('quantity');
         $producto= $this->getDoctrine()
         ->getRepository('ProductoBundle:Producto')
         ->find($id);
@@ -48,7 +52,8 @@ class DefaultController extends Controller
     /**
     *@Route("/product/cart/view" , name="product_view_cart")
     */
-    public function viewCartAction(){
+    public function viewCartAction()
+    {
         $cartService = $this->get('app.cart');
         $productos = $cartService->getAll();
         // var_dump($productos);

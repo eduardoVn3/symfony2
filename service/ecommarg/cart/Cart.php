@@ -7,15 +7,24 @@ use ecommarg\cart\ProductInterface as Product;
 Class Cart implements CartInterface{
 	
 	private	$adapter;
+	//private $addAdapters;
 
 	public function __construct (SaveAdapter $adapter){
 		$this->adapter=$adapter;
 	}
 
-	public function add(Product $producto){
+	public function add(Product $producto, $quantity = 1){
+		$quantity = (int) $quantity;
+		if($quantity <= 0)
+		{
+			throw new \Exception("Cantidad invalida");
+		}
 		$this->adapter->set(
 			$producto->getId(),
-			json_encode($producto)
+			json_encode([
+					'quantity'=>$quantity,
+					'producto'=>$producto
+				])
 		);
 	}
 
@@ -24,7 +33,24 @@ Class Cart implements CartInterface{
 	}
 
 	public function getAll(){
-		return $this->adapter->getAll();
+		$data = $this->adapter->getAll();
+		foreach ($data as &$value) {
+			$value = json_decode($value);
+		}
+		return $data;
 	}
+
+	//mas de un adaptarodr
+	// public function addAdapter(SaveAdapter $adapter)
+	// {
+	// 	$this->addAdapters[]=$adapter;
+
+	// }
+	// public function addProductAdapter(Product $product)
+	// {
+	// 	foreach ($this->adapters as $adapter) {
+	// 		$adapter->set($product->getId(),json_encode($product));
+	// 	}
+	// }
 
 }

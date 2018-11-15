@@ -38,12 +38,8 @@ Class SessionAdapter implements SaveAdapterInterface
 
 	public function getAll()
 	{
-		$all = $this->session
+		return $this->session
 		->getBag($this->bagName)
 		->all();
-		foreach ($all as &$value) {
-			$value = json_decode($value);
-		}
-		return $all;
 	}
 }
