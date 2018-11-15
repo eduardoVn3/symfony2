@@ -5,6 +5,7 @@ namespace ProductoBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -35,17 +36,30 @@ class DefaultController extends Controller
     {
         $id = $r->get('id');
         $quantity = $r->get('quantity');
+
+        $requestType = strtolower($r->headers->get('X-Requested-With'));
+        $isAjax = 'xmlhttprequest' === $requestType;
+
         $producto= $this->getDoctrine()
         ->getRepository('ProductoBundle:Producto')
         ->find($id);
 
-        if(null===$producto){
+        if(null === $producto){
             throw new \Exception("Product not found");
         }
 
         $cartService = $this->get('app.cart');
-
         $cartService->add($producto);
+
+        if(true === $isAjax){
+            $response = new Response();
+            $response->headers->add([
+                    'Content-Type'=>'application/json'
+            ]);
+            $response->setContent(json_encode($cartService->getAll()));
+            return $response;
+        }
+
         return $this->redirect($this->generateUrl('product_view_cart'));
     }
 

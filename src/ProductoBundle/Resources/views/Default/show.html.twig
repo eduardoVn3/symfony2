@@ -62,7 +62,7 @@
 <label>Precio: ${{producto.price}}
 </label>
 
-<form action="{{path('product_add_cart')}}" method="POST">
+<form id="addToCart" action="{{path('product_add_cart')}}" method="POST">
 	<div class="grid-x">
 <div class="small-3 cell">
 <label for="middle-label" class="middle">Quantity</label>
@@ -71,16 +71,24 @@
 	<input type="hidden" id="middle-label" value="{{producto.id}}" name="id">
 	<input type="number" id="middle-label" value="1" max="{{producto.stock}}" min="1" name="quantity">
 	</div>
-	<input type="submit" class="button large expanded" id="addToCart" value="Agregar carrito"></a>
+	<input type="submit" class="button large expanded" value="Agregar carrito"></a>
 </div>
 </form>
-
 <!-- <div class="small secondary expanded button-group">
 <a class="button">Facebook</a>
 <a class="button">Twitter</a>
 <a class="button">Yo</a>
 </div> -->
 </div>
+</div>
+
+<div class="reveal" id="modalSuccess" data-reveal>
+  <h1>Awesome. I Have It.</h1>
+  <p class="lead">Your couch. It is mine.</p>
+  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
 <!--< div class="">
 <hr>
@@ -175,4 +183,19 @@ My Review
 </div>
 </div> -->
 </article>
+<script>
+$(document).ready(()=>{
+    $('#addToCart').on('submit', function(e){
+      e.preventDefault();
+      $.ajax({
+      	url:"{{path('product_add_cart')}}",
+      	method:"POST",
+      	data: $(this).serialize()
+      }).done((data)=>{
+      	alert('Se agrego el producto al carrito');
+      	$('#modalSuccess').foundation('open');
+      });
+    })
+});
+</script>
 {% endblock %}

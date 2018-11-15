@@ -10,6 +10,7 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-prototype.min.css">
             <link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
             <link href='style.css' rel='stylesheet' type='text/css'>
             <script
               src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -23,6 +24,7 @@
             <div class="top-bar" id="responsive-menu">
               <div class="top-bar-right">
                 <ul class="menu">
+                <a href="{{path('product_view_cart')}}" class="clear button small success"><i class="fas fa-cart-plus fa-2x"></i></a>
                   <form action="{{path('Product_list')}}" method="GET">
                       <input type="text" placeholder="Search" name="name">
                       <input type="submit" value="Search">

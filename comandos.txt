@@ -133,3 +133,5 @@ al termianr
       LEER: "nested set vs adyacency model" preferentemente el nested set
 
       patron de adaptadores
+
+      X-Requested-With si aparece en los headers es por que es de tipo ajax
