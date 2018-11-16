@@ -135,3 +135,8 @@ al termianr
       patron de adaptadores
 
       X-Requested-With si aparece en los headers es por que es de tipo ajax
+
+      crear un controlador llamado ProductoApi eñl cual deveulve un listado de productos en json
+
+      oubset sql
+      
