@@ -139,4 +139,27 @@ al termianr
       crear un controlador llamado ProductoApi eñl cual deveulve un listado de productos en json
 
       oubset sql
-      
+      post para crear o agregar cosas
+      put para actualizar  modificar
+      delete para borrar
+      get para vizualizar
+
+      codigo de estado http
+      200 todo esta correcto
+      400 errores del cliente
+      500 errores del servidor
+
+      las respuestas se comparan con el codigo http
+
+      basic http
+      sesiones
+      jwt
+
+      httpResponse->Status(xxx)
+      para obtener errores del formulario es $form->getErrors();
+
+      gettype() el tipo de variable
+
+      anotyaciones de tipo asserts
+
+      cual es el campo que falta en el formulario

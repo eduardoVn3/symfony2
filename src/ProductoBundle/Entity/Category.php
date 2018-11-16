@@ -3,15 +3,23 @@
 namespace ProductoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Commer\Collections\ArrayCollection;
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Category
  *
  * @ORM\Table(name="category")
  * @ORM\Entity(repositoryClass="ProductoBundle\Repository\CategoryRepository")
  */
-class Category
+class Category implements \jsonSerializable
 {
+
+    public function jsonSerialize()
+    {
+        return [
+            'id'=>$this->getId(),
+            'name'=>$this->getName()
+        ];
+    }
     /**
      * @var int
      *
@@ -74,6 +82,11 @@ class Category
      * @return string
      */
     public function getName()
+    {
+        return $this->name;
+    }
+
+    public function __toString()
     {
         return $this->name;
     }

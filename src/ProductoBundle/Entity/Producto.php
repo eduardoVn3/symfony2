@@ -4,7 +4,8 @@ namespace ProductoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ecommarg\cart\ProductInterface;
-use Doctrine\Commer\Collections\ArrayCollection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Producto
@@ -35,7 +36,7 @@ class Producto implements ProductInterface
 
     /**
      * @var string
-     *
+     *@Assert\NotBlank
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -151,5 +152,11 @@ class Producto implements ProductInterface
     {
         return $this->stock;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
 }
 
