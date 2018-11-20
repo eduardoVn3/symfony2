@@ -43,14 +43,14 @@ class Producto implements ProductInterface
 
     /**
      * @var float
-     *
+     *@Assert\NotBlank
      * @ORM\Column(name="price", type="float")
      */
     private $price;
 
     /**
      * @var int
-     *
+     *@Assert\NotBlank
      * @ORM\Column(name="stock", type="integer")
      */
     private $stock;

@@ -11,6 +11,51 @@ use ProductoBundle\Entity\Producto;
 
 class ProductoApiController extends Controller
 {
+    /**
+     *@Route("/product/api/add", name="product_api_add")
+     *@Method("POST")
+     */
+    public function addAction(Request $r){
+        $product = new Producto();
+        $form = $this->createForm(
+            'ProductoBundle\Form\ProductoApiType',
+            $product,
+            [
+                'csrf_protection' => false
+            ]
+        );
+        $form->bind($r);
+        $valid = $form->isValid();
+        $response = new Response();
+        if(false === $valid){
+            $response->setStatusCode(400);
+            $response->setContent(json_encode($this->getFormErrors($form)));
+            return $response;
+        }
+        if (true === $valid) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($product);
+            $em->flush();
+            $response->setContent(json_encode($product));
+        }
+        return $response;
+    }
+
+    public function getFormErrors($form){
+        $errors = [];
+        if (0 === $form->count()){
+            return $errors;
+        }
+        foreach ($form->all() as $child) {
+            if (!$child->isValid()) {
+                $errors[$child->getName()] = (string) $form[$child->getName()]->getErrors();
+            }
+        }
+        return $errors;
+    }
+
+
+
 	/**
 	*@Route("/api/product/list" , name="Product_list_api")
 	*/
